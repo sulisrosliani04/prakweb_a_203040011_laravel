@@ -60,30 +60,5 @@ Route::get('/dashboard', function () {
     return view('dashboard.index');
 })->middleware('auth');
 
+Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
 Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
-
-
-
-// Route::get('/categories', function () {
-//     return view('category', [
-//         'title' => 'Post Categories',
-//         'categories' => Category::all()
-//     ]);
-// });
-
-
-// Route::get('/categories/{category:slug}', function (Category $category) {
-//     return view('posts', [
-//         'title' => "Post by Category : $category->name",
-//         'active' => 'categories',
-//         'posts' => $category->posts->load('category', 'author')
-//     ]);
-// });
-
-// Route::get('/authors/{author:username}', function (User $author) {
-//     return view('posts', [
-//         'title' => "Post By Author : $author->name",
-//         'active' => 'posts',
-//         'posts' => $author->posts->load('category', 'author'),
-//     ]);
-// });
